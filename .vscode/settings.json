@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "opencsv-5.7.1.jar",
+        "g:\\Course\\HKVI\\Data Mining\\Assignment\\minlog-1.3.1.jar",
+        "g:\\Course\\HKVI\\Data Mining\\Assignment\\jena-arq-2.10.1.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
