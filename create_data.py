@@ -3,7 +3,6 @@ from pyjedai.datamodel import Data
 def create_data(profiles1:dict,profiles2:dict,gt=None):
     dataset1=DataFrame(profiles1)
     dataset2=DataFrame(profiles2)
-    print(dataset1.loc[1])
     if gt is None:
         return Data(dataset_1=dataset1,attributes_1=profiles1.keys(),id_column_name_1='id',dataset_2=dataset2,attributes_2=profiles2.keys(),id_column_name_2='id')
         
