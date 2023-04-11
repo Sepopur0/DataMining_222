@@ -27,6 +27,7 @@ def makeuplst(count,val):
 
 def Dictionary_file(profiles):
     res={}
+    most={}
     res['id']=[i for i in range(1,len(profiles)+1)]
     count=0
     profilesIterator=profiles.iterator()
@@ -36,12 +37,14 @@ def Dictionary_file(profiles):
         attributesIterator = profile.getAttributes().iterator()
         while attributesIterator.hasNext() :
             entity=str(attributesIterator.next().toString())
-            attr=entity[(entity.find(':\t')+2):entity.find(',')]
-            val=entity[(entity.find('value\t:\t')+8):]
+            attr=str(entity[(entity.find(':')+1):entity.find(',')])[1:] #prevent accidentally turn str into division
+            val=str(entity[(entity.find('value\t:')+7):])[1:]
             if attr in res:
                 res[attr].append(val)
+                most[attr]+=1
             else:
                 res[attr]=makeuplst(count,val)
+                most[attr]=1
             curkeylst.append(attr)
         keylst=list(res.keys())
         for i in curkeylst:
@@ -50,7 +53,7 @@ def Dictionary_file(profiles):
         for i in keylst:
             if i!='id':res[i].append('') 
         count+=1
-    return res
+    return res,most
     
 
 def Dictionary_Gt_file(profiles):
@@ -68,18 +71,18 @@ def Dictionary_Gt_file(profiles):
 #     while profilesIterator.hasNext() :
 #         profile = profilesIterator.next()
 #         print(str(profile.getEntityId1())+' | '+str(profile.getEntityId2()))
-# def printFile(profiles,i=0,j=-1):
-#     profilesIterator = profiles.iterator()
-#     counter =0
-#     flag=j
-#     # print(len(profiles))
-#     while profilesIterator.hasNext() :
-#         profile = profilesIterator.next()
-#         if (counter>=i) or flag==-1:
-#             print("\n\n" + profile.getEntityUrl())
-#             attributesIterator = profile.getAttributes().iterator()
-#             while attributesIterator.hasNext() :
-#                 print(attributesIterator.next().toString())
-#         counter+=1
-#         if counter>=j and flag!=-1:
-#             break
+def printFile(profiles,i=0,j=-1):
+    profilesIterator = profiles.iterator()
+    counter =0
+    flag=j
+    # print(len(profiles))
+    while profilesIterator.hasNext() :
+        profile = profilesIterator.next()
+        if (counter>=i) or flag==-1:
+            print("\n\n" + profile.getEntityUrl())
+            attributesIterator = profile.getAttributes().iterator()
+            while attributesIterator.hasNext() :
+                print(attributesIterator.next().toString())
+        counter+=1
+        if counter>=j and flag!=-1:
+            break

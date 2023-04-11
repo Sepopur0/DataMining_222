@@ -8,7 +8,7 @@ def buildblock(dataset):
     return block_builder.build_blocks(dataset)
 
 def cleanblock(builtblock,dataset):
-    block_cleaner_1=BlockFiltering(ratio=0.75)
+    block_cleaner_1=BlockFiltering(ratio=0.8)
     block_cleaner_2=BlockPurging()
     cleaned_block_p=block_cleaner_1.process(builtblock,dataset)
     return block_cleaner_2.process(cleaned_block_p,dataset)
