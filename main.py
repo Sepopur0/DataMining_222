@@ -3,7 +3,7 @@ from create_data import create_data
 from block_process import data_process
 from match import data_matcher
 from pyjedai.evaluation import write
-DATA_SETS={#'Restaurants':['restaurant1Profiles','restaurant2Profiles','restaurantsIdDuplicates'],
+DATA_SETS={'Restaurants':['restaurant1Profiles','restaurant2Profiles','restaurantsIdDuplicates'],
            'Abt-Buy':['abtProfiles','buyProfiles','abtBuyIdDuplicates'],
            'Amazon-Google Products':['amazonProfiles','gpProfiles','amazonGpIdDuplicates'],
            'DBLP-ACM':['dblpProfiles','acmProfiles','dblpAcmIdDuplicates'],
@@ -39,16 +39,16 @@ def inform():
     return  'datafiles\\'+DATA_SETS[idx][0],'datafiles\\'+DATA_SETS[idx][1],'datafiles\\'+DATA_SETS[idx][2]
         
 def choosekey(most1,most2):
-    least1=list(most1.keys())[0]
-    least2=list(most2.keys())[0]
-    for i in most1:
-        if most1[i]< most1[least1]:
-            least1=i
-    for i in most2:
-        if most2[i]< most2[least2]:
-            least2=i    
-    del most1[least1]
-    del most2[least2]
+    # least1=list(most1.keys())[0]
+    # least2=list(most2.keys())[0]
+    # for i in most1:
+    #     if most1[i]< most1[least1]:
+    #         least1=i
+    # for i in most2:
+    #     if most2[i]< most2[least2]:
+    #         least2=i    
+    # del most1[least1]
+    # del most2[least2]
     set1=set(most1)
     set2=set(most2)   
     return list(set1.intersection(set2))
@@ -71,7 +71,7 @@ def main():
     dataset=create_data(dataframe1,dataframe2,gtframe)
     keylst=choosekey(most1,most2)
     #process data
-    processed_data=data_process(dataset)
+    processed_data=data_process(dataset,keylst)
     
     #match data
     matched_data=data_matcher(processed_data,dataset,keylst)

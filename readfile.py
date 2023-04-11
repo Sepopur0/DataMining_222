@@ -61,8 +61,8 @@ def Dictionary_Gt_file(profiles):
     profilesIterator = profiles.iterator()
     while profilesIterator.hasNext() :
         profile = profilesIterator.next()
-        res['D1'].append(str(profile.getEntityId1()))
-        res['D2'].append(str(profile.getEntityId2()))
+        res['D1'].append(int(profile.getEntityId1()))
+        res['D2'].append(int(profile.getEntityId2()))
     return res
 
 
