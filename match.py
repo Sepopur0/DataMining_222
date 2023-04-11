@@ -6,7 +6,7 @@ def data_matcher(blocks,dataset,keys):
     matcher=EntityMatching(metric='levenshtein',attributes=keys,similarity_threshold=0.5)
     cluster=ConnectedComponentsClustering()
     matched=matcher.predict(blocks,dataset,True)
-    Evaluation(dataset).report(matched)
+    # Evaluation(dataset).report(matched)
     res=cluster.process(matched)
     cluster.report()
     Evaluation(dataset).report(res)
