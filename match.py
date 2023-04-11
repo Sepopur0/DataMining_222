@@ -1,7 +1,7 @@
 from pyjedai.matching import EntityMatching
 from pyjedai.clustering import ConnectedComponentsClustering
 from pyjedai.evaluation import Evaluation, write
-from networkx import draw, Graph
+# from networkx import draw, Graph
 def data_matcher(blocks,dataset,keys):
     matcher=EntityMatching(metric='levenshtein',attributes=keys,similarity_threshold=0.5)
     cluster=ConnectedComponentsClustering()

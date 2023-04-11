@@ -2,7 +2,7 @@ from readfile import *
 from create_data import create_data
 from block_process import data_process
 from match import data_matcher
-
+from pyjedai.evaluation import write
 DATA_SETS={#'Restaurants':['restaurant1Profiles','restaurant2Profiles','restaurantsIdDuplicates'],
            'Abt-Buy':['abtProfiles','buyProfiles','abtBuyIdDuplicates'],
            'Amazon-Google Products':['amazonProfiles','gpProfiles','amazonGpIdDuplicates'],
@@ -76,8 +76,8 @@ def main():
     #match data
     matched_data=data_matcher(processed_data,dataset,keylst)
     # print(matched_data)
-    
-    
+    result=write(matched_data,dataset)
+    result.to_csv('output.csv')    
     
 
     
