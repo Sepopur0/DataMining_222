@@ -39,6 +39,16 @@ def inform():
     return  'datafiles\\'+DATA_SETS[idx][0],'datafiles\\'+DATA_SETS[idx][1],'datafiles\\'+DATA_SETS[idx][2]
         
 def choosekey(most1,most2):
+    least1=list(most1.keys())[0]
+    least2=list(most2.keys())[0]
+    for i in most1:
+        if most1[i]< most1[least1]:
+            least1=i
+    for i in most2:
+        if most2[i]< most2[least2]:
+            least2=i    
+    del most1[least1]
+    del most2[least2]
     set1=set(most1)
     set2=set(most2)   
     return list(set1.intersection(set2))
